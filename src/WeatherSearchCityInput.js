@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 export default function WeatherSearchCityInput() {
-
   let [city, setCity] = useState("");
-  let [weatherResult, setWeatherResult] = useState("");
   let [temperature, setTemperature] = useState(null);
   let [description, setDescription] = useState(null);
   let [humidity, setHumidity] = useState(null);
@@ -25,7 +23,6 @@ export default function WeatherSearchCityInput() {
         `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
       );
     }
-    setWeatherResult();
   }
 
   function updateCity(event) {
@@ -48,7 +45,7 @@ export default function WeatherSearchCityInput() {
             <li>Description: {description}</li>
             <li>Humidity: {humidity}%</li> <li>Wind: {wind} km/hr</li>
             <li>
-              Icon:<img src={icon}></img>
+              Icon:<img src={icon} alt="Icon Weather"></img>
             </li>
           </ul>
         </div>
@@ -56,4 +53,3 @@ export default function WeatherSearchCityInput() {
     </div>
   );
 }
-
