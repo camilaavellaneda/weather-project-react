@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import MainWeatherInfo from "./MainWeatherInfo";
 import "bootstrap/dist/css/bootstrap.css";
+import axios from "axios";
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
           href="https://github.com/camilaavellaneda/weather-project-react"
           target={"_blank"}
           className="author"
-          no-referrer
+          no-referrer="true"
         >
           open-sourced on Github
         </a>
