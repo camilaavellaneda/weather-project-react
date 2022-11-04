@@ -1,13 +1,13 @@
 import "./App.css";
 import React from "react";
-import MainWeatherInfo from "./MainWeatherInfo";
 import "bootstrap/dist/css/bootstrap.css";
+import SearchEngine  from "./SearchEngine";
 
 export default function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <MainWeatherInfo defaultCity="Berlin" />
+      <SearchEngine defaultCity="Berlin" />
       <footer>
         This project was coded by Camila Avellaneda and is{" "}
         <a
