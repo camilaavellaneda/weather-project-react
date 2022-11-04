@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <MainWeatherInfo />
+      <MainWeatherInfo defaultCity="Berlin"/>
       <footer>
         This project was coded by Camila Avellaneda and is{" "}
         <a
