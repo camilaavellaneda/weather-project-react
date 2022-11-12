@@ -19,14 +19,12 @@ export default function WeatherForecast(props) {
   if (loaded) {
     return (
       <div id="weather-forecast" className="row align-items-start">
-        {forecast.map(function (dailyForecast, index) {
-          if (index < 5) {
-            return (
-              <div className="col-2" key={index}>
-                <WeatherForecastDay01 data={dailyForecast} />
-              </div>
-            );
-          }
+        {forecast.slice(0, 5).map(function (dailyForecast, index) {
+          return (
+            <div className="col-2" key={index}>
+              <WeatherForecastDay01 data={dailyForecast} />
+            </div>
+          );
         })}
       </div>
     );
