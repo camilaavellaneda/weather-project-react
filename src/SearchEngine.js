@@ -13,6 +13,7 @@ export default function SearchEngine(props) {
   function selectResponse(response) {
     let weatherIconData = response.data.condition.icon;
     let weatherIconUrl = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weatherIconData}.png`;
+    console.log("setting new weather data");
     setWeatherData({
       temperature: Math.round(response.data.temperature.current),
       country: response.data.country,
@@ -23,6 +24,7 @@ export default function SearchEngine(props) {
       date: new Date(response.data.time * 1000),
       weatherIcon: weatherIconUrl,
       ready: true,
+      coordinates: response.data.coordinates,
     });
   }
 
@@ -36,21 +38,19 @@ export default function SearchEngine(props) {
   }
 
   function searchAttribute() {
-        axios
-          .get(
-            `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`
-          )
-          .then(selectResponse);
-
+    axios
+      .get(
+        `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`
+      )
+      .then(selectResponse);
   }
-
 
   // Weather App HTML
   if (weatherData.ready) {
     return (
       <div className="Weatherapp">
         <div id="weather-card" className="card">
-        <WeatherInfo data={weatherData} />
+          <WeatherInfo data={weatherData} />
           <div id="row-middle">
             <form id="search-form" className="mb-3" onSubmit={handleSubmit}>
               <div>
@@ -73,7 +73,7 @@ export default function SearchEngine(props) {
               </div>
             </form>
           </div>
-          <WeatherForecast />
+          <WeatherForecast coordinates={weatherData.coordinates} />
         </div>
       </div>
     );
