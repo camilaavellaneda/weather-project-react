@@ -11,6 +11,7 @@ export default function SearchEngine(props) {
     isReady: false,
     isFetching: false,
   });
+  const [isInitialized, setInitialized] = useState(false);
   const [city, setCity] = useState(props.defaultCity);
 
   function setWeatherDataFromApiResponse(response) {
@@ -54,6 +55,10 @@ export default function SearchEngine(props) {
         .then(setWeatherDataFromApiResponse);
     }
   }
+  if (!isInitialized) {
+    setInitialized(true);
+    updateWeatherDataFromGeolocation();
+  }
 
   // Weather App HTML
   if (weatherData.isReady) {
@@ -88,7 +93,6 @@ export default function SearchEngine(props) {
       </div>
     );
   } else {
-    updateWeatherDataFromGeolocation();
     return <h1>Loading...</h1>;
   }
 }
