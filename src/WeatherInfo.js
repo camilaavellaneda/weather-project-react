@@ -21,11 +21,7 @@ export default function WeatherInfo(props) {
           <span id="element-temperature">
             {Math.round(props.data.temperature)} {"  "}
           </span>
-          <span id="element-celsius">C°</span> |{" "}
-          <span id="element-farenheit">
-            {" "}
-            F°
-          </span>
+          <span id="element-celsius">C°</span>
         </div>
         <div id="city">{props.data.city}</div>
         <div id="country">{props.data.country}</div>
